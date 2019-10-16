@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:11
+    environment:
+      POSTGRES_PASSWORD: development
+
+  web:
+    build: .
+    image: dog-walking-server
+    command: web
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/opt/app:Z
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://postgres:development@db:5432/dog_walking_development
+      WEBPACKER_DEV_SERVER_HOST: front
+    depends_on:
+      - db
+      - front
+
+  front:
+    build: .
+    image: dog-walking-server
+    command: bin/webpack-dev-server
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/opt/app:Z
+    restart: always
+    ports:
+      - "3535:3535"
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+
+  test:
+    build: .
+    image: dog-walking-server
+    command: test
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/opt/app:Z
+    environment:
+      DATABASE_URL: postgresql://postgres:development@db:5432/dog_walking_test
+      RAILS_ENV: test
+    depends_on:
+      - db
