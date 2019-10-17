@@ -10,11 +10,7 @@
 #  pets        :integer
 #  address_id  :integer          not null
 #
-# Indexes
-#
-#  index_dog_walkings_on_address_id  (address_id)
-#  index_dog_walkings_on_date        (date)
-#
 
 class DogWalking < ApplicationRecord
+  belongs_to :address
 end
