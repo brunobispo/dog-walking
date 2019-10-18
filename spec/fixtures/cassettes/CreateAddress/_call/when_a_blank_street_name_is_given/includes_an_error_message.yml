@@ -1,0 +1,124 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=,%20205&key=AIzaSyCjeq_oQZyC4N8z1D8PVBjDcAE9rfJYrUQ&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Thu, 17 Oct 2019 05:37:41 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=61
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,43",h3-Q048=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "625",
+                       "short_name" : "625",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "South Mill Road",
+                       "short_name" : "S Mill Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Leon",
+                       "short_name" : "Leon",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Little Walnut",
+                       "short_name" : "Little Walnut",
+                       "types" : [ "administrative_area_level_3", "political" ]
+                    },
+                    {
+                       "long_name" : "Butler County",
+                       "short_name" : "Butler County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "Kansas",
+                       "short_name" : "KS",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "67074",
+                       "short_name" : "67074",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "625 S Mill Rd, Leon, KS 67074, USA",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 37.6846902,
+                       "lng" : -96.78654999999999
+                    },
+                    "location_type" : "ROOFTOP",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 37.6860391802915,
+                          "lng" : -96.7852010197085
+                       },
+                       "southwest" : {
+                          "lat" : 37.6833412197085,
+                          "lng" : -96.7878989802915
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJ2QZDyYVJuocR3NoQaL3sDeM",
+                 "plus_code" : {
+                    "compound_code" : "M6M7+V9 Leon, Little Walnut, KS, United States",
+                    "global_code" : "8695M6M7+V9"
+                 },
+                 "types" : [ "establishment", "point_of_interest", "school" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Thu, 17 Oct 2019 05:37:41 GMT
+recorded_with: VCR 5.0.0

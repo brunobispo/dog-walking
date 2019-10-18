@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=Rua%20%C3%81lvaro%20de%20Carvalho,%20205&key=AIzaSyCjeq_oQZyC4N8z1D8PVBjDcAE9rfJYrUQ&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Thu, 17 Oct 2019 05:37:42 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=59
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,43",h3-Q048=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICAicmVzdWx0cyIgOiBbCiAgICAgIHsKICAgICAgICAgImFkZHJlc3NfY29tcG9uZW50cyIgOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgImxvbmdfbmFtZSIgOiAiMjA1IiwKICAgICAgICAgICAgICAgInNob3J0X25hbWUiIDogIjIwNSIsCiAgICAgICAgICAgICAgICJ0eXBlcyIgOiBbICJzdHJlZXRfbnVtYmVyIiBdCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgImxvbmdfbmFtZSIgOiAiUnVhIMOBbHZhcm8gZGUgQ2FydmFsaG8iLAogICAgICAgICAgICAgICAic2hvcnRfbmFtZSIgOiAiUi4gw4FsdmFybyBkZSBDYXJ2YWxobyIsCiAgICAgICAgICAgICAgICJ0eXBlcyIgOiBbICJyb3V0ZSIgXQogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICJsb25nX25hbWUiIDogIkNlbnRybyBIaXN0w7NyaWNvIGRlIFPDo28gUGF1bG8iLAogICAgICAgICAgICAgICAic2hvcnRfbmFtZSIgOiAiQ2VudHJvIEhpc3TDs3JpY28gZGUgU8OjbyBQYXVsbyIsCiAgICAgICAgICAgICAgICJ0eXBlcyIgOiBbICJwb2xpdGljYWwiLCAic3VibG9jYWxpdHkiLCAic3VibG9jYWxpdHlfbGV2ZWxfMSIgXQogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICJsb25nX25hbWUiIDogIlPDo28gUGF1bG8iLAogICAgICAgICAgICAgICAic2hvcnRfbmFtZSIgOiAiU8OjbyBQYXVsbyIsCiAgICAgICAgICAgICAgICJ0eXBlcyIgOiBbICJhZG1pbmlzdHJhdGl2ZV9hcmVhX2xldmVsXzIiLCAicG9saXRpY2FsIiBdCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgImxvbmdfbmFtZSIgOiAiU8OjbyBQYXVsbyIsCiAgICAgICAgICAgICAgICJzaG9ydF9uYW1lIiA6ICJTUCIsCiAgICAgICAgICAgICAgICJ0eXBlcyIgOiBbICJhZG1pbmlzdHJhdGl2ZV9hcmVhX2xldmVsXzEiLCAicG9saXRpY2FsIiBdCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgImxvbmdfbmFtZSIgOiAiQnJhemlsIiwKICAgICAgICAgICAgICAgInNob3J0X25hbWUiIDogIkJSIiwKICAgICAgICAgICAgICAgInR5cGVzIiA6IFsgImNvdW50cnkiLCAicG9saXRpY2FsIiBdCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgImxvbmdfbmFtZSIgOiAiMDEwNTAtMDcwIiwKICAgICAgICAgICAgICAgInNob3J0X25hbWUiIDogIjAxMDUwLTA3MCIsCiAgICAgICAgICAgICAgICJ0eXBlcyIgOiBbICJwb3N0YWxfY29kZSIgXQogICAgICAgICAgICB9CiAgICAgICAgIF0sCiAgICAgICAgICJmb3JtYXR0ZWRfYWRkcmVzcyIgOiAiUi4gw4FsdmFybyBkZSBDYXJ2YWxobywgMjA1IC0gQ2VudHJvIEhpc3TDs3JpY28gZGUgU8OjbyBQYXVsbywgU8OjbyBQYXVsbyAtIFNQLCAwMTA1MC0wNzAsIEJyYXppbCIsCiAgICAgICAgICJnZW9tZXRyeSIgOiB7CiAgICAgICAgICAgICJsb2NhdGlvbiIgOiB7CiAgICAgICAgICAgICAgICJsYXQiIDogLTIzLjU0OTExMjIsCiAgICAgICAgICAgICAgICJsbmciIDogLTQ2LjY0MjExODEKICAgICAgICAgICAgfSwKICAgICAgICAgICAgImxvY2F0aW9uX3R5cGUiIDogIlJBTkdFX0lOVEVSUE9MQVRFRCIsCiAgICAgICAgICAgICJ2aWV3cG9ydCIgOiB7CiAgICAgICAgICAgICAgICJub3J0aGVhc3QiIDogewogICAgICAgICAgICAgICAgICAibGF0IiA6IC0yMy41NDc3NjMyMTk3MDg1LAogICAgICAgICAgICAgICAgICAibG5nIiA6IC00Ni42NDA3NjkxMTk3MDg1CiAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICJzb3V0aHdlc3QiIDogewogICAgICAgICAgICAgICAgICAibGF0IiA6IC0yMy41NTA0NjExODAyOTE1LAogICAgICAgICAgICAgICAgICAibG5nIiA6IC00Ni42NDM0NjcwODAyOTE1CiAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgICB9LAogICAgICAgICAicGxhY2VfaWQiIDogIkVtRlNMaUREZ1d4MllYSnZJR1JsSUVOaGNuWmhiR2h2TENBeU1EVWdMU0JEWlc1MGNtOGdTR2x6ZE1PemNtbGpieUJrWlNCVHc2TnZJRkJoZFd4dkxDQlR3Nk52SUZCaGRXeHZJQzBnVTFBc0lEQXhNRFV3TFRBM01Dd2dRbkpoZW1sc0loc1NHUW9VQ2hJSmEwWkhlMDFZenBRUjVlNDA4UDlwcEY0UXpRRSIsCiAgICAgICAgICJ0eXBlcyIgOiBbICJzdHJlZXRfYWRkcmVzcyIgXQogICAgICB9CiAgIF0sCiAgICJzdGF0dXMiIDogIk9LIgp9Cg==
+    http_version: 
+  recorded_at: Thu, 17 Oct 2019 05:37:42 GMT
+recorded_with: VCR 5.0.0

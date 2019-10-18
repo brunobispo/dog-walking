@@ -65,3 +65,13 @@ RSpec.configure do |config|
 
   config.include FactoryBot::Syntax::Methods
 end
+
+WebMock.disable_net_connect! allow_localhost: true
+
+DatabaseCleaner.allow_remote_database_url = true
+
+VCR.configure do |config|
+  config.cassette_library_dir = 'spec/fixtures/cassettes'
+  config.hook_into :webmock
+  config.configure_rspec_metadata!
+end

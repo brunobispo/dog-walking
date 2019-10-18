@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+gem 'geocoder'
 gem 'validates_timeliness'
 
 group :development, :test do
@@ -46,9 +47,12 @@ group :development do
 end
 
 group :test do
+  gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-rails'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
