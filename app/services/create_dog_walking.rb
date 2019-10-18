@@ -22,8 +22,7 @@ class CreateDogWalking < ApplicationService
   end
 
   def create_address
-    CreateAddress
-      .call(@address)
+    CreateAddress.(@address)
       .tap { |result| errors.merge!(result.errors) unless result.success? }
       .address
   end

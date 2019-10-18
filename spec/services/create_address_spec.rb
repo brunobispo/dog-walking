@@ -3,10 +3,8 @@ describe CreateAddress do
     subject(:result) { described_class.call(params) }
 
     before do
-      Geocoder.configure(
-        lookup: :google,
-        api_key: 'AIzaSyCjeq_oQZyC4N8z1D8PVBjDcAE9rfJYrUQ'
-      )
+      Geocoder.configure(lookup: :google,
+                         api_key: 'AIzaSyCjeq_oQZyC4N8z1D8PVBjDcAE9rfJYrUQ')
     end
 
     let(:params) do

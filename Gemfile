@@ -51,6 +51,7 @@ group :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-rails'
+  gem 'rspec_api_documentation'
   gem 'vcr'
   gem 'webmock'
 end

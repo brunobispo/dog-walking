@@ -23,3 +23,6 @@ RSpec/ExampleLength:
 Metrics/BlockLength:
   Exclude:
     - spec/**/*
+
+Style/LambdaCall:
+  EnforcedStyle: brances

@@ -64,14 +64,30 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.include FactoryBot::Syntax::Methods
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.around do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
 end
 
 WebMock.disable_net_connect! allow_localhost: true
 
 DatabaseCleaner.allow_remote_database_url = true
+DatabaseCleaner.strategy = :transaction
 
 VCR.configure do |config|
   config.cassette_library_dir = 'spec/fixtures/cassettes'
   config.hook_into :webmock
   config.configure_rspec_metadata!
+end
+
+RspecApiDocumentation.configure do |config|
+  config.format = :markdown
 end
