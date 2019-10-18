@@ -33,19 +33,20 @@ resource 'Dog Walkings', :vcr do
       let(:raw_post) { params.to_json }
 
       example_request 'Creating a new walking' do
+        response = JSON.parse(response_body, symbolize_names: true)
         expect(status).to eq 200
-        expect(JSON.parse(response_body)).to eq(
-          'id' => 1,
-          'date' => '2019-10-10T23:00:00.000Z',
-          'pets' => 2,
-          'address' => {
-            'street' => 'Rua Mario Amaral Barros',
-            'number' => '100',
-            'complement' => nil,
-            'city' => 'Limeira',
-            'state' => 'SP',
-            'latitude' => '-22.589775',
-            'longitude' => '-47.401124'
+        expect(response).to eq(
+          id: 1,
+          date: '2019-10-10T23:00:00.000Z',
+          pets: 2,
+          address: {
+            street: 'Rua Mario Amaral Barros',
+            number: '100',
+            complement: nil,
+            city: 'Limeira',
+            state: 'SP',
+            latitude: '-22.589775',
+            longitude: '-47.401124'
           }
         )
       end
@@ -61,30 +62,62 @@ resource 'Dog Walkings', :vcr do
       let(:raw_post) { params.to_json }
 
       example_request 'Handling validation errors' do
+        response = JSON.parse(response_body, symbolize_names: true)
         expect(status).to eq 422
-        expect(JSON.parse(response_body)).to eq(
-          'message' => 'Validation failed',
-          'errors' => {
-            'street' => ['is invalid']
-          }
-        )
+        expect(response).to eq(errors: { street: ['is invalid'] })
       end
     end
+  end
 
-    get '/api/dog_walkings' do
-      parameter :upcoming,
-                'Filter upcoming walkings',
-                required: false,
-                with_example: true
+  get '/api/dog_walkings', freeze_on: '2019-10-10T08:00:10Z' do
+    parameter :upcoming,
+              'Filter upcoming walkings',
+              required: false,
+              with_example: true
+
+    let!(:future) { create(:dog_walking, date: '2019-10-10T10:10:10Z') }
+    let!(:previous) { create(:dog_walking, date: '2019-10-09T10:10:10Z') }
+
+    example_request 'Listing upcoming walkings', upcoming: true do
+      response = JSON.parse(response_body, symbolize_names: true)
+      expect(status).to eq 200
+      expect(response).to eq(
+        dog_walkings: [
+          {
+            id: future.id,
+            state: 'scheduled',
+            date: '2019-10-10T10:10:10.000Z'
+          }
+        ]
+      )
     end
 
-    get '/api/dog_walkings/:id' do
+    example_request 'Listing all walkings' do
+      response = JSON.parse(response_body, symbolize_names: true)
+      expect(status).to eq 200
+      expect(response).to eq(
+        dog_walkings: [
+          {
+            id: previous.id,
+            state: 'scheduled',
+            date: '2019-10-09T10:10:10.000Z'
+          },
+          {
+            id: future.id,
+            state: 'scheduled',
+            date: '2019-10-10T10:10:10.000Z'
+          }
+        ]
+      )
     end
+  end
 
-    patch '/api/dog_walkings/:id/start_walk' do
-    end
+  get '/api/dog_walkings/:id' do
+  end
 
-    patch '/api/dog_walkings/:id/finish_walk' do
-    end
+  patch '/api/dog_walkings/:id/start_walk' do
+  end
+
+  patch '/api/dog_walkings/:id/finish_walk' do
   end
 end

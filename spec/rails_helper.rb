@@ -75,6 +75,12 @@ RSpec.configure do |config|
       example.run
     end
   end
+
+  config.around(freeze_on: true) do |example|
+    Timecop.freeze(example.metadata[:freeze_on]) do
+      example.run
+    end
+  end
 end
 
 WebMock.disable_net_connect! allow_localhost: true

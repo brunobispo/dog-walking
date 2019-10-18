@@ -154,6 +154,9 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    responders (3.0.0)
+      actionpack (>= 5.0)
+      railties (>= 5.0)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
       rspec-expectations (~> 3.9.0)
@@ -219,6 +222,7 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.10)
+    timecop (0.9.1)
     timeliness (0.4.3)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
@@ -263,6 +267,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   rails (~> 6.0.0)
+  responders
   rspec-rails
   rspec_api_documentation
   rubocop-rails
@@ -270,6 +275,7 @@ DEPENDENCIES
   sass-rails (~> 5)
   spring
   spring-watcher-listen (~> 2.0.0)
+  timecop
   turbolinks (~> 5)
   tzinfo-data
   validates_timeliness

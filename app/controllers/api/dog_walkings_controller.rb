@@ -1,9 +1,19 @@
 module Api
   class DogWalkingsController < ActionController::API
-    def create
-      return if (@result = CreateDogWalking.(dog_walking_params)).success?
+    respond_to :json
 
-      render 'api/unprocessable_entity', status: :unprocessable_entity
+    def index
+      @result = DogWalking.order(:date)
+      @result = UpcommingDogWalkingsQuery.(@result) if params.key? :upcoming
+
+      respond_with @result
+    end
+
+    def create
+      @result = CreateDogWalking.(dog_walking_params)
+      respond_with @result
+    end
+
     end
 
     private

@@ -1,6 +1,6 @@
 # Dog Walkings API
 
-## Creating a new dog walking
+## Creating a new walking
 
 ### POST /api/dog_walkings
 
@@ -47,8 +47,8 @@ Referrer-Policy: strict-origin-when-cross-origin
 Content-Type: application/json; charset=utf-8
 ETag: W/&quot;f480e044b20c6ab6d9a6b1f96bb635b1&quot;
 Cache-Control: max-age=0, private, must-revalidate
-X-Request-Id: 18fbb1e9-e873-488b-bb45-23f5d8ff7e55
-X-Runtime: 0.245190
+X-Request-Id: 2d97273f-9ef1-4445-b828-8906500e11db
+X-Runtime: 0.522870
 Content-Length: 210</pre>
 
 #### Status
