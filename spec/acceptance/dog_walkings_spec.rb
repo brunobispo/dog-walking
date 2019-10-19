@@ -280,7 +280,7 @@ resource 'Dog Walkings', :vcr do
           pets: 2,
           state: 'finished',
           price: 55.0,
-          duration: 2999.0,
+          duration: 2999,
           address: {
             street: 'Rua Mário Amaral Barros',
             number: '100',

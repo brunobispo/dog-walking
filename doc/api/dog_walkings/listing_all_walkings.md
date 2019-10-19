@@ -1,6 +1,6 @@
 # Dog Walkings API
 
-## Listing walkings
+## Listing all walkings
 
 ### GET /api/dog_walkings
 
@@ -21,11 +21,7 @@ Cookie: </pre>
 
 #### Route
 
-<pre>GET /api/dog_walkings?upcoming=true</pre>
-
-#### Query Parameters
-
-<pre>upcoming: true</pre>
+<pre>GET /api/dog_walkings</pre>
 
 ### Response
 
@@ -38,10 +34,10 @@ X-Download-Options: noopen
 X-Permitted-Cross-Domain-Policies: none
 Referrer-Policy: strict-origin-when-cross-origin
 Content-Type: application/json; charset=utf-8
-ETag: W/&quot;84b8f7b924a03b614d86fb2a322231f1&quot;
+ETag: W/&quot;7ae327ef71e6ededaf41f6791e902e07&quot;
 Cache-Control: max-age=0, private, must-revalidate
-X-Request-Id: 303d16f7-f095-4af4-bb6f-e530d7c508e1
-X-Runtime: 0.114236
+X-Request-Id: 25612576-0b0f-47b0-af38-a7ffa040b56b
+X-Runtime: 0.162926
 Content-Length: 144</pre>
 
 #### Status
@@ -53,12 +49,12 @@ Content-Length: 144</pre>
 <pre>{
   "dog_walkings": [
     {
-      "id": 2,
-      "date": "2019-10-10T10:10:10.000Z",
+      "id": 5,
+      "date": "2019-10-09T10:10:10.000Z",
       "state": "scheduled"
     },
     {
-      "id": 3,
+      "id": 4,
       "date": "2019-10-10T10:10:10.000Z",
       "state": "scheduled"
     }

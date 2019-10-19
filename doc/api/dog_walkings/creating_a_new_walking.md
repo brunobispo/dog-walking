@@ -45,11 +45,11 @@ X-Download-Options: noopen
 X-Permitted-Cross-Domain-Policies: none
 Referrer-Policy: strict-origin-when-cross-origin
 Content-Type: application/json; charset=utf-8
-ETag: W/&quot;f480e044b20c6ab6d9a6b1f96bb635b1&quot;
+ETag: W/&quot;94490bf82c8707f8ce2c95cf9340f4c0&quot;
 Cache-Control: max-age=0, private, must-revalidate
-X-Request-Id: 2d97273f-9ef1-4445-b828-8906500e11db
-X-Runtime: 0.522870
-Content-Length: 210</pre>
+X-Request-Id: 5be3744a-408d-4618-a5b5-75a61d9f97e7
+X-Runtime: 0.939390
+Content-Length: 259</pre>
 
 #### Status
 
@@ -61,6 +61,9 @@ Content-Length: 210</pre>
   "id": 1,
   "date": "2019-10-10T23:00:00.000Z",
   "pets": 2,
+  "state": "scheduled",
+  "duration": null,
+  "price": null,
   "address": {
     "street": "Rua Mario Amaral Barros",
     "number": "100",

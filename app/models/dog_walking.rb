@@ -23,7 +23,7 @@ class DogWalking < ApplicationRecord
   end
 
   def duration
-    (finished_at || Time.current) - started_at if started?
+    ((finished_at || Time.current) - started_at).to_i if started?
   end
 
   def price
@@ -32,7 +32,7 @@ class DogWalking < ApplicationRecord
     aditional_pets = pets - 1
 
     if duration > 30.minutes
-      hours = (duration / 1.hour).ceil
+      hours = (duration.to_f / 1.hour).ceil
       (35.0 + aditional_pets * 20.0) * hours
     else
       25.0 + aditional_pets * 15.0
