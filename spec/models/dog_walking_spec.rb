@@ -3,7 +3,7 @@
 # Table name: dog_walkings
 #
 #  id          :integer          not null, primary key
-#  state       :string
+#  state       :string           default("scheduled")
 #  date        :datetime
 #  started_at  :datetime
 #  finished_at :datetime
@@ -32,5 +32,39 @@ describe DogWalking do
       pets: an_instance_of(Integer),
       address: an_instance_of(Address)
     )
+  end
+
+  describe '#state' do
+    it 'is "scheduled" by default' do
+      expect(DogWalking.new).to have_attributes(state: 'scheduled')
+    end
+  end
+
+  describe '#started?' do
+    context 'when started_at is present' do
+      before { dog_walking.started_at = Time.current }
+
+      it { is_expected.to be_started }
+    end
+
+    context 'when started_at is empty' do
+      before { dog_walking.started_at = nil }
+
+      it { is_expected.not_to be_started }
+    end
+  end
+
+  describe '#finished?' do
+    context 'when finished_at is present' do
+      before { dog_walking.finished_at = Time.current }
+
+      it { is_expected.to be_finished }
+    end
+
+    context 'when finished_at is empty' do
+      before { dog_walking.finished_at = nil }
+
+      it { is_expected.not_to be_finished }
+    end
   end
 end

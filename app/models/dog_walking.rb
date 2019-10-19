@@ -3,7 +3,7 @@
 # Table name: dog_walkings
 #
 #  id          :integer          not null, primary key
-#  state       :string
+#  state       :string           default("scheduled")
 #  date        :datetime
 #  started_at  :datetime
 #  finished_at :datetime
@@ -13,4 +13,12 @@
 
 class DogWalking < ApplicationRecord
   belongs_to :address
+
+  def started?
+    started_at.present?
+  end
+
+  def finished?
+    finished_at.present?
+  end
 end

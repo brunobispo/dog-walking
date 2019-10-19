@@ -39,6 +39,7 @@ resource 'Dog Walkings', :vcr do
           id: 1,
           date: '2019-10-10T23:00:00.000Z',
           pets: 2,
+          state: 'scheduled',
           address: {
             street: 'Rua Mario Amaral Barros',
             number: '100',
@@ -113,11 +114,206 @@ resource 'Dog Walkings', :vcr do
   end
 
   get '/api/dog_walkings/:id' do
+    context '200' do
+      let(:id) { dog_walking.id }
+
+      let!(:dog_walking) do
+        create(:dog_walking,
+               address: address,
+               pets: 2,
+               date: '2019-10-10T23:00:00')
+      end
+
+      let(:address) do
+        create(:address,
+               street: 'Rua Mário Amaral Barros',
+               number: '100',
+               complement: nil,
+               city: 'Limeira',
+               state: 'SP',
+               latitude: '-22.589775',
+               longitude: '-47.401124')
+      end
+
+      example_request 'Displaying details of a walking' do
+        response = JSON.parse(response_body, symbolize_names: true)
+        expect(status).to eq 200
+        expect(response).to eq(
+          id: dog_walking.id,
+          date: '2019-10-10T23:00:00.000Z',
+          pets: 2,
+          state: 'scheduled',
+          address: {
+            street: 'Rua Mário Amaral Barros',
+            number: '100',
+            complement: nil,
+            city: 'Limeira',
+            state: 'SP',
+            latitude: '-22.589775',
+            longitude: '-47.401124'
+          }
+        )
+      end
+    end
+
+    context '404' do
+      let(:id) { 2 }
+
+      example_request 'Looking for an inexistent walking' do
+        expect(status).to eq 404
+        expect(response_body).to be_empty
+      end
+    end
   end
 
   patch '/api/dog_walkings/:id/start_walk' do
+    context '200' do
+      let(:id) { dog_walking.id }
+
+      let!(:dog_walking) do
+        create(:dog_walking,
+               address: address,
+               pets: 2,
+               date: '2019-10-10T23:00:00')
+      end
+
+      let(:address) do
+        create(:address,
+               street: 'Rua Mário Amaral Barros',
+               number: '100',
+               complement: nil,
+               city: 'Limeira',
+               state: 'SP',
+               latitude: '-22.589775',
+               longitude: '-47.401124')
+      end
+
+      example_request 'Starting a walking' do
+        response = JSON.parse(response_body, symbolize_names: true)
+        expect(status).to eq 200
+        expect(response).to eq(
+          id: dog_walking.id,
+          date: '2019-10-10T23:00:00.000Z',
+          pets: 2,
+          state: 'started',
+          address: {
+            street: 'Rua Mário Amaral Barros',
+            number: '100',
+            complement: nil,
+            city: 'Limeira',
+            state: 'SP',
+            latitude: '-22.589775',
+            longitude: '-47.401124'
+          }
+        )
+      end
+    end
+
+    context '422' do
+      let(:id) { dog_walking.id }
+
+      let!(:dog_walking) do
+        create(:dog_walking,
+               :started,
+               address: address,
+               pets: 2,
+               started_at: '2019-10-10T23:10:00',
+               date: '2019-10-10T23:00:00')
+      end
+
+      let(:address) do
+        create(:address,
+               street: 'Rua Mário Amaral Barros',
+               number: '100',
+               complement: nil,
+               city: 'Limeira',
+               state: 'SP',
+               latitude: '-22.589775',
+               longitude: '-47.401124')
+      end
+
+
+      example_request 'Trying to start an started walking' do
+        response = JSON.parse(response_body, symbolize_names: true)
+        expect(status).to eq 422
+        expect(response).to eq(errors: { base: ['is already started'] })
+      end
+    end
   end
 
   patch '/api/dog_walkings/:id/finish_walk' do
+    context '200' do
+      let(:id) { dog_walking.id }
+
+      let!(:dog_walking) do
+        create(:dog_walking,
+               :started,
+               address: address,
+               pets: 2,
+               date: '2019-10-10T23:00:00')
+      end
+
+      let(:address) do
+        create(:address,
+               street: 'Rua Mário Amaral Barros',
+               number: '100',
+               complement: nil,
+               city: 'Limeira',
+               state: 'SP',
+               latitude: '-22.589775',
+               longitude: '-47.401124')
+      end
+
+      example_request 'Finish a walking' do
+        response = JSON.parse(response_body, symbolize_names: true)
+        expect(status).to eq 200
+        expect(response).to eq(
+          id: dog_walking.id,
+          date: '2019-10-10T23:00:00.000Z',
+          pets: 2,
+          state: 'finished',
+          address: {
+            street: 'Rua Mário Amaral Barros',
+            number: '100',
+            complement: nil,
+            city: 'Limeira',
+            state: 'SP',
+            latitude: '-22.589775',
+            longitude: '-47.401124'
+          }
+        )
+      end
+    end
+
+    context '422' do
+      let(:id) { dog_walking.id }
+
+      let!(:dog_walking) do
+        create(:dog_walking,
+               :finished,
+               address: address,
+               pets: 2,
+               started_at: '2019-10-10T23:10:00',
+               date: '2019-10-10T23:00:00')
+      end
+
+      let(:address) do
+        create(:address,
+               street: 'Rua Mário Amaral Barros',
+               number: '100',
+               complement: nil,
+               city: 'Limeira',
+               state: 'SP',
+               latitude: '-22.589775',
+               longitude: '-47.401124')
+      end
+
+
+      example_request 'Trying to finish an finished walking' do
+        response = JSON.parse(response_body, symbolize_names: true)
+        expect(status).to eq 422
+        expect(response).to eq(errors: { base: ['is already finished'] })
+      end
+    end
   end
 end

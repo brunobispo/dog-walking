@@ -40,3 +40,15 @@ en:
       on_or_before: "must be on or before %{restriction}"
       after: "must be after %{restriction}"
       on_or_after: "must be on or after %{restriction}"
+  activemodel:
+    errors:
+      models:
+        start_dog_walking:
+          attributes:
+            base:
+              already_started: "is already started"
+        finish_dog_walking:
+          attributes:
+            base:
+              not_started: "is not started"
+              already_finished: "is already finished"
