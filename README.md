@@ -1,24 +1,30 @@
-# README
+<h1 align="center">Dog Walking API 🐶</h1>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> A web API for managing dog walkings built with Ruby on Rails 6. See the [API Documentation](doc/api/index.md).
 
-Things you may want to cover:
+## Dependencies
 
-* Ruby version
+* Docker (~> 18.09.2)
+* Docker Compose (~> 1.23.2)
 
-* System dependencies
+## Install
 
-* Configuration
+Copy `.env.sample` as `.env` and fill the gaps. 
 
-* Database creation
+## Usage
 
-* Database initialization
+```sh
+docker-compose up web
+```
 
-* How to run the test suite
+## Run tests
 
-* Services (job queues, cache servers, search engines, etc.)
+```sh
+docker-compose run --rm test
+```
 
-* Deployment instructions
+## Author
 
-* ...
+👤 **Bruno Bispo**
+
+* Github: [@brunobispo](https://github.com/brunobispo)

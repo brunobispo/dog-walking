@@ -14,7 +14,7 @@ RUN npm install -g yarn
 
 WORKDIR /tmp
 ADD Gemfile Gemfile
-#ADD Gemfile.lock Gemfile.lock
+ADD Gemfile.lock Gemfile.lock
 RUN bundle install --jobs 4
 
 ADD . /opt/app
