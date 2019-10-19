@@ -1,4 +1,4 @@
-json.extract! dog_walking, :id, :date, :pets, :state
+json.extract! dog_walking, :id, :date, :pets, :state, :duration, :price
 json.address do
   json.extract! dog_walking.address,
                 :street,

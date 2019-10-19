@@ -23,6 +23,7 @@ FactoryBot.define do
     end
 
     trait :finished do
+      started
       finished_at { 1.day.ago }
     end
   end

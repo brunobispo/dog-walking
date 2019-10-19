@@ -40,6 +40,8 @@ resource 'Dog Walkings', :vcr do
           date: '2019-10-10T23:00:00.000Z',
           pets: 2,
           state: 'scheduled',
+          price: nil,
+          duration: nil,
           address: {
             street: 'Rua Mario Amaral Barros',
             number: '100',
@@ -143,6 +145,8 @@ resource 'Dog Walkings', :vcr do
           date: '2019-10-10T23:00:00.000Z',
           pets: 2,
           state: 'scheduled',
+          price: nil,
+          duration: nil,
           address: {
             street: 'Rua Mário Amaral Barros',
             number: '100',
@@ -166,7 +170,7 @@ resource 'Dog Walkings', :vcr do
     end
   end
 
-  patch '/api/dog_walkings/:id/start_walk' do
+  patch '/api/dog_walkings/:id/start_walk', freeze_on: '2019-10-10T23:59:00Z' do
     context '200' do
       let(:id) { dog_walking.id }
 
@@ -196,6 +200,8 @@ resource 'Dog Walkings', :vcr do
           date: '2019-10-10T23:00:00.000Z',
           pets: 2,
           state: 'started',
+          price: 40.0,
+          duration: 0.0,
           address: {
             street: 'Rua Mário Amaral Barros',
             number: '100',
@@ -241,7 +247,7 @@ resource 'Dog Walkings', :vcr do
     end
   end
 
-  patch '/api/dog_walkings/:id/finish_walk' do
+  patch '/api/dog_walkings/:id/finish_walk', freeze_on: '2019-10-10T23:59:59Z' do
     context '200' do
       let(:id) { dog_walking.id }
 
@@ -250,7 +256,8 @@ resource 'Dog Walkings', :vcr do
                :started,
                address: address,
                pets: 2,
-               date: '2019-10-10T23:00:00')
+               started_at: '2019-10-10T23:10:00Z',
+               date: '2019-10-10T23:00:00Z')
       end
 
       let(:address) do
@@ -272,6 +279,8 @@ resource 'Dog Walkings', :vcr do
           date: '2019-10-10T23:00:00.000Z',
           pets: 2,
           state: 'finished',
+          price: 55.0,
+          duration: 2999.0,
           address: {
             street: 'Rua Mário Amaral Barros',
             number: '100',
